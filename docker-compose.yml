@@ -8,9 +8,9 @@ services:
       # the IP of the server running this service. 
       # SSL will automatically be set up and
       #  renewed with LetsEncrypt.
-      - HOSTNAME=your.host.name
+      - HOSTNAME=ping.evasec.xyz
       # [REQUIRED] Email for SSL
-      - SSL_CONTACT_EMAIL=YourEmail@gmail.com
+      - SSL_CONTACT_EMAIL=eran@evasec.io
       # Maximum XSS callback payload size
       # This includes the webpage screenshot, DOM HTML,
       # page text, and other metadata. Note that if the
@@ -27,10 +27,10 @@ services:
       - SMTP_HOST=smtp.gmail.com
       - SMTP_PORT=465
       - SMTP_USE_TLS=true
-      - SMTP_USERNAME=YourEmail@gmail.com
-      - SMTP_PASSWORD=YourEmailPassword
-      - SMTP_FROM_EMAIL=YourEmail@gmail.com
-      - SMTP_RECEIVER_EMAIL=YourEmail@gmail.com
+      - SMTP_USERNAME=erandosecnew@gmail.com
+      - SMTP_PASSWORD=youthinkyougotme
+      - SMTP_FROM_EMAIL=xsshunter@evasec.io
+      - SMTP_RECEIVER_EMAIL=xsshunter-notificatio-aaaaktyzlfcxbbgoc3ffsq3qxa@evasec.slack.com
       # THERE IS NO NEED TO MODIFY BELOW THIS LINE
       # ------------------------------------------
       # FEEL FREE, BUT KNOW WHAT YOU'RE DOING.

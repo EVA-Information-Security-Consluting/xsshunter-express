@@ -125,15 +125,36 @@ async function set_up_api_server(app) {
     });
 
     // Serve the front-end
-    app.use('/admin/', express.static(
+    app.use('/5ebaf53b680b353855407b68a2e43007', express.static(
     	'./front-end/dist/',
     	{
     		setHeaders: function (res, path, stat) {
     			res.set("Content-Security-Policy", "default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self'; prefetch-src 'self'; manifest-src 'self'");
+                // Set 'secure' cookie only if origined from trusted url
+                res.cookie('secure',"yeppp", { maxAge: 900000, httpOnly: true });
     		},
     	},
     ));
     app.use(favicon('./front-end/dist/favicon.ico'));
+
+
+    // Check for 'secure' cookie
+    app.use(async function(req, res, next) {
+        let cookies = req.headers.cookie;
+
+        if(cookies && cookies.includes('secure=yeppp')) {
+            next();
+            return
+        }
+        
+        res.status(406).json({
+            "success": false,
+            "error": "You must be authenticated to use this endpoint.",
+            "code": "NOT_AUTHENTICATED"
+        }).end();
+        return
+
+    });
 
     /*
 		Endpoint which returns if the user is logged in or not.
